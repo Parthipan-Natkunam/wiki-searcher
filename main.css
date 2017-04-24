@@ -1,0 +1,93 @@
+/* Color Scheme
+----------------
+    primary blaack: #031927
+    secondary black: #1C3144
+    blue: #3F88C5
+    red: #BA1200
+    yellow: #F9C80E
+----------------
+*/
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
+body{
+    background: #031927;
+    padding: 1em 1em 1em 1em;
+}
+#btnRand{
+    background: #F9C80E;
+    border:none;
+    margin-bottom:1em;
+    color: #1C3144;
+    outline: none;
+    font-weight: bold;
+}
+#btnRand:hover{
+    background: #3F88C5;
+    color: #fff;
+}
+#searchBox{
+    position: relative;
+    margin-bottom: 1em;
+}
+.fa-search{
+    font-size: 20px;
+    position: absolute;
+    top:12px;
+    left:8px;
+    color:#F9C80E;
+}
+#query{
+    background: transparent;
+    color:#F9C80E;
+    padding:0.5em 0.5em 0.5em 0.5em;
+    border: 1px solid #F9C80E;
+    -webkit-border-radius: 50px;
+    -moz-border-radius:50px;
+    border-radius:50px;
+    outline:none;
+    text-indent: 25px;
+}
+.contents{
+    background: #fff;
+    margin: 1em 1em 1em 1em;
+    padding: 1em 1em 1em 1.5em;
+    border-radius: 0 25px 0 25px;
+    -webkit-animation: entry 2s ease;
+    animation: entry 2s ease;
+    cursor:pointer;
+}
+@-webkit-keyframes entry {
+    0%{
+        opacity:0;
+    }
+    100%{
+        opacity:1;
+    }
+}
+@keyframes entry {
+    0%{
+        opacity:0;
+    }
+    100%{
+        opacity:1;
+    }
+}
+.contents:hover{
+    border-left: 0.5em solid #BA1200;
+}
+.contents > h3{
+    color: #031927;
+}
+.contents > p{
+    color: #1C3144;
+}
+.panels,.panels:hover,.panels:focus{
+    text-decoration: none;
+}
+@media screen and (max-width: 445px){
+    #searchBox{
+        padding-top: 3em;
+    }
+    .fa-search{
+        top:58px;
+    }
+}
