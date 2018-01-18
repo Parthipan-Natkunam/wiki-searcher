@@ -1,6 +1,7 @@
 var searchStr = "";
 var beginHtml = "<div class='contents'>";
 var endHtml = "</div>";
+var htmlStr;
 function FetchQuery(el){
     el.preventDefault();
     $('#holder').html('<b style="color:#fff;">Loading...</b>');
@@ -15,14 +16,15 @@ function FetchQuery(el){
         success: function(data){
             if(Number(data.query.searchinfo.totalhits) > 0){
                 var dataArr = data.query.search;
+                htmlStr = '';
                 $('#holder').html('');
                 var linkstart = '<a class = "col-10 panels" ';
                 for(var i in dataArr){
-                    var pageHref = 'href="https://en.wikipedia.org/wiki/'+dataArr[i].title.replace(/ /g,'_')+'" '+'target="_blank">';
+                    var pageHref = 'href="https://en.wikipedia.org/wiki/'+dataArr[i].title.replace(/\s/g,'_')+'" '+'target="_blank">';
                     var actLink = linkstart+pageHref;
-                    htmlStr = actLink+beginHtml+"<h3>"+dataArr[i].title+"</h3>"+"<p>"+dataArr[i].snippet+"</p>"+endHtml+"</a>";
-                    $('#holder').append(htmlStr);
+                    htmlStr += actLink+beginHtml+"<h3>"+dataArr[i].title+"</h3>"+"<p>"+dataArr[i].snippet+"</p>"+endHtml+"</a>";
                 }
+                $('#holder').append(htmlStr);
             }
             else{
                 $('#holder').html('');
@@ -41,7 +43,7 @@ $(document).ready(function(){
         if(e.which == '13'){
             searchStr = $('#query').val();
         }
-        if(Boolean(searchStr)!= false){
+        if(!!searchStr){
             FetchQuery(e);
             searchStr ="";
         }
